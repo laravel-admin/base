@@ -19,7 +19,7 @@
     </ul>
 
     <nav class="navbar navbar-fixed-top scrolling-navbar double-nav">
-        <div class="pull-left">
+        <div class="float-md-left">
             <a href="#" data-activates="slide-out" class="button-collapse">
                 <i class="fa fa-bars"></i>
             </a>
@@ -31,14 +31,11 @@
         </div>
 
 
-        <ul class="nav navbar-nav pull-right">
+        <ul class="nav navbar-nav float-md-right">
             <li class="nav-item">
-                <form action="{{ route('admin.logout') }}" method="post" id="logout">
-                    {{ csrf_field() }}
-                    <button class="nav-link" type="submit" aria-haspopup="true" aria-expanded="false" form="logout">
-                        <i class="fa fa-sign-out"></i> Logout
-                    </button>
-                </form>
+                <a href="{{ route('admin.logout') }}" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-sign-out"></i> Logout
+                </a>
             </li>
         </ul>
 

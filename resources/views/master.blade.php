@@ -10,8 +10,9 @@
     <!-- Admin -->
     <link rel="stylesheet" href="/mdb/css/bootstrap.min.css">
     <link rel="stylesheet" href="/mdb/css/mdb.css">
+    <link rel="stylesheet" href="/mdb/css/admin-styles.css">
 </head>
-<body class="@yield('body-class')">
+<body class="@yield('body-class', 'fixed-sn elegant-white-skin')">
 <!-- Admin menu -->
 @if(auth()->user())
     @include('admin::menu')
