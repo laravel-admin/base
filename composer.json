@@ -4,5 +4,7 @@
     "type": "Laravel Package",
     "license": "MIT",
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "laracasts/flash": "^2.0"
+    }
 }
