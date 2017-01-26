@@ -17,7 +17,7 @@ class BaseServiceProvider extends ServiceProvider
 
 		$this->publishes([
 	        __DIR__.'/../resources/config/admin.php' => config_path('admin.php'),
-	    ]);
+	    ], 'admin-config');
 
 		$this->mergeConfigFrom(
         	__DIR__.'/../resources/config/admin.php', 'admin'
