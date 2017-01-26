@@ -4,7 +4,9 @@
     "type": "Laravel Package",
     "license": "MIT",
     "minimum-stability": "dev",
-    "require": {
-        "laracasts/flash": "^2.0"
-    }
+	"autoload": {
+	   "psr-4": {
+		   "LaravelAdmin\\Base\\": "src"
+		}
+   	}
 }
