@@ -15,10 +15,15 @@ class BaseServiceProvider extends ServiceProvider
         // Load the views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'admin');
 
-		//	Publish the MDB assets
 		$this->publishes([
-			   __DIR__.'/../resources/mdb' => public_path('mdb'),
-		   ], 'public');
+	        __DIR__.'/../resources/config/admin.php' => config_path('admin.php'),
+	    ]);
+
+		$this->mergeConfigFrom(
+        	__DIR__.'/../resources/config/admin.php', 'admin'
+    	);
+
+		 $this->loadMigrationsFrom(__DIR__.'/../resources/migrations');
     }
 
     public function register()
@@ -29,9 +34,5 @@ class BaseServiceProvider extends ServiceProvider
             $loader = AliasLoader::getInstance();
             $loader->alias('Admin', 'LaravelAdmin\Base\Facades\Admin');
         });
-    }
-
-    public function routes() {
-        return $this->app;
     }
 }

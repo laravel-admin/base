@@ -1,33 +1,86 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title')</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Admin -->
-    <link rel="stylesheet" href="/mdb/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/mdb/css/mdb.css">
-    <link rel="stylesheet" href="/mdb/css/admin-styles.css">
+    <!-- CSRF Token -->
+    <meta name="csrf-param" content="_token" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+	@stack('meta')
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    <link href="/css/app.css" rel="stylesheet">
+	@stack('css')
+
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
+	@stack('scripts_head')
 </head>
-<body class="@yield('body-class', 'fixed-sn elegant-white-skin')">
-<!-- Admin menu -->
-@if(auth()->user())
-    @include('admin::menu')
-@endif
+<body>
+    <div id="app">
 
-@yield('content')
+		@include('admin::flash')
 
-<!-- Admin -->
-<script src="/js/app.js"></script>
-<script src="/mdb/js/mdb.min.js"></script>
+		@if (!Auth::guest())
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
 
-<script>
-    $(".button-collapse").sideNav();
-</script>
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-@yield('scripts')
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+
+
+		            @include('admin::menu')
+
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('admin.logout') }}">
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+		@endif
+
+        @yield('content')
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
+	@stack('scripts')
 </body>
 </html>

@@ -1,44 +1,65 @@
 @extends('admin::master')
 
-@section('title')
-    Login | Admin
-@stop
-
-@section('body-class')fixed-sn elegant-white-skin @stop
-
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-5 login-form mx-auto float-xs-none">
-                <form action="{{ route('admin.attempt') }}" method="post">
-                    {{ csrf_field() }}
-                    <div class="card">
-                        <div class="card-block">
+<div class="container page-login">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.login') }}">
+                        {{ csrf_field() }}
 
-                            <div class="form-header">
-                                <h3><i class="fa fa-lock"></i> Admin:</h3>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                             </div>
-
-                            <div class="md-form">
-                                <i class="fa fa-envelope prefix"></i>
-                                <input type="text" id="form2" name="email" class="form-control">
-                                <label for="form2">Email</label>
-                            </div>
-
-                            <div class="md-form">
-                                <i class="fa fa-lock prefix"></i>
-                                <input type="password" id="form4" name="password" class="form-control">
-                                <label for="form4">Password</label>
-                            </div>
-
-                            <div class="text-md-right">
-                                <button class="btn btn-primary">Login</button>
-                            </div>
-
                         </div>
-                    </div>
-                </form>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-@stop
+</div>
+@endsection
