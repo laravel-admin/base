@@ -1,4 +1,3 @@
-<?php function mix($url) { return $url; } ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
