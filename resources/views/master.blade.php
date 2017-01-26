@@ -1,3 +1,4 @@
+<?php function mix($url) { return $url; } ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+	@foreach (config('admin.css') as $css)
+    	<link href="{{ mix($css) }}" rel="stylesheet">
+	@endforeach
+
 	@stack('css')
 
     <!-- Scripts -->
@@ -80,7 +84,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+	@foreach (config('admin.js') as $js)
+		<script src="{{ mix($js) }}"></script>
+	@endforeach
 	@stack('scripts')
 </body>
 </html>
