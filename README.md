@@ -1,21 +1,10 @@
 # Laravel Admin Interface
 
-This package is experimental, don't use it for production.
+This package is in alpha state, use it in production on own risk.
 
 ##  Installation
 
-This package is not yet available with packagist, so you have to create a repositories section in you composer.json file.
-
-```
-"repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/laravel-admin/base"
-        }
-]
-```
-
-Now you can add the package with composer
+Add this package directly with composer:
 
 ```
 composer require laravel-admin/base
@@ -25,12 +14,6 @@ Add the service provider to your app.php config file
 
 ```
 LaravelAdmin\Base\BaseServiceProvider::class,
-```
-
-Add the Alias to your aliasses in the app.php 
-
-```
-'Admin'	=>	LaravelAdmin\Base\Facades\Admin::class,
 ```
 
 Scaffold your base admin routes within your routes/web.php file
