@@ -1,6 +1,8 @@
 # Laravel Admin Interface
 
-This package is in alpha state, use it in production on own risk.
+Extend your Laravel App with an admin interface out-of-the-box. This packages creates an admin including a login page. The interface is fully compatible with the default bootstrap interface which is included in your Laravel app.
+
+> note: This package is in alpha state, use it in production on own risk.
 
 ##  Installation
 
