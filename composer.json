@@ -1,7 +1,7 @@
 {
     "name": "laravel-admin/base",
     "description": "Admin interface with login for Laravel",
-    "type": "Laravel Package",
+    "type": "laravel-package",
     "license": "MIT",
     "minimum-stability": "dev",
 	"autoload": {
