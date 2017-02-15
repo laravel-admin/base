@@ -18,7 +18,7 @@ Add the service provider to your app.php config file
 LaravelAdmin\Base\BaseServiceProvider::class,
 ```
 
-Optional: Add the admin middleware in app/Http/Kernel.php file in the $routeMiddleware array.
+Add the admin middleware in app/Http/Kernel.php file in the $routeMiddleware array.
 
 ```
 'auth.admin' => \LaravelAdmin\Base\Middleware\AuthenticateAdminUser::class
