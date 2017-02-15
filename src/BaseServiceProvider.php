@@ -15,17 +15,19 @@ class BaseServiceProvider extends ServiceProvider
         // Load the views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'admin');
 
-		$this->publishes([
-	        __DIR__.'/../resources/config/admin.php' => config_path('admin.php'),
-	    ], 'admin-config');
+        // Publish the config
+		$this->publishes([__DIR__ . '/../resources/config/admin.php' => config_path('admin.php')], 'admin-config');
 
-		$this->mergeConfigFrom(
-        	__DIR__.'/../resources/config/admin.php', 'admin'
-    	);
+        // Load config file
+		$this->mergeConfigFrom(__DIR__ . '/../resources/config/admin.php', 'admin');
 
-		 $this->loadMigrationsFrom(__DIR__.'/../resources/migrations');
+        // Load packages migrations
+		$this->loadMigrationsFrom(__DIR__ . '/../resources/migrations');
     }
 
+    /**
+     * Register the package options, like a facade
+     */
     public function register()
     {
         $this->app->booting(function()

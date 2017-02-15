@@ -20,11 +20,7 @@
 	@stack('css')
 
     <!-- Scripts -->
-    <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-    </script>
+    <script>window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token()]); ?></script>
 	@stack('scripts_head')
 </head>
 <body>
