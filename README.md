@@ -36,16 +36,16 @@ php artisan vendor:publish --tag=admin-config
 
 ### Config options
 
-#### route_group
+#### routeGroup
 Defining the properties of all admin routes. By default all routes are separated on a specific domain which you can define as ADMIN_URL in your .env file. But is is also possible to use a subdirectory to replace the domain property by a prefix property like 'admin'.
 
-#### route_middleware
+#### routeMiddleware
 Definition of the middleware what will be used after login. By default you can use the middleware above.
 
 #### roles
 Array with the available user roles. 
 
-#### canlogin
+#### canLogin
 Array with the roles who can login in the admin
 
 #### js
@@ -64,7 +64,7 @@ Scaffold your base admin routes within your routes/web.php file
 ```
 Admin::routes(function()
 {
-	//  Add your routes
+	// Add your routes
 });
 ```
 

@@ -1,19 +1,24 @@
 <?php
 
 return [
+    // Route group settings
+	'routeGroup' => ['domain' => env('ADMIN_URL'), 'as' => 'admin.'],
 
-	'route_group' => ['domain'=>env('ADMIN_URL'), 'as'=>'admin.'],
+    // Define which middleware the admin uses
+	'routeMiddleware' => ['middleware' => 'auth.admin'],
 
-	'route_middleware' => ['middleware'=>'auth.admin'],
-
-	'js' => ['/js/app.js'],
+    // Assets
+	'js'  => ['/js/app.js'],
 	'css' => ['/css/app.css'],
 
-	'roles'	=>	[
-		'admin', 'editor','author','user','api'
+    // Simple roles
+	'roles'	=> [
+		'admin', 'editor', 'author', 'user', 'api'
 	],
 
-	'canlogin' => ['admin','editor'],
+    // Define who can login into the admin
+	'canLogin' => ['admin', 'editor'],
 
+    // Simple menu
 	'menu'	=>	[],
 ];
