@@ -41,7 +41,7 @@
                     @endif
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ env('ADMIN_URL') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -75,7 +75,7 @@
         </nav>
 
         @include('admin::flash')
-		
+
 
         @yield('content')
 

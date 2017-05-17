@@ -13,19 +13,19 @@
 					@foreach ($main['children'] as $sub)
 						@if (!empty($sub['children']))
 						<li class="dropdown-submenu">
-							<a href="{{ $sub['url'] }}">{{ $sub['name'] }}</a>
+							<a href="{{ env('ADMIN_URL') . $sub['url'] }}">{{ $sub['name'] }}</a>
 
 							<ul class="dropdown-menu">
 								@foreach ($sub['children'] as $subsub)
 									<li>
-										<a href="{{ $subsub['url'] }}">{{ $subsub['name'] }}</a>
+										<a href="{{ env('ADMIN_URL') . $subsub['url'] }}">{{ $subsub['name'] }}</a>
 									</li>
 								@endforeach
 							</ul>
 						</li>
 						@else
 						<li>
-							<a href="{{ $sub['url'] }}">{{ $sub['name'] }}</a>
+							<a href="{{ env('ADMIN_URL') . $sub['url'] }}">{{ $sub['name'] }}</a>
 						</li>
 						@endif
 					@endforeach
@@ -35,7 +35,7 @@
 		@else
 
 			<li>
-				<a href="{{ $main['url'] }}">{{ $main['name'] }}</a>
+				<a href="{{ env('ADMIN_URL') . $main['url'] }}">{{ $main['name'] }}</a>
 			</li>
 
 		@endif
