@@ -15,14 +15,13 @@ class Admin {
     {
         // Inside the web group middleware
         Route::group(['middleware' => 'web'], function() use($callable) {
-
             // Admin listens only on specific domain or prefix "admin" for extra security measures
-            Route::group(config('admin.routeGroup'), function() use($callable) 
+            Route::group(config('admin.route_group'), function() use($callable)
             {
 			    Route::get('/login',  ['uses' => '\LaravelAdmin\Base\Controllers\LoginController@showLoginForm'])->name('login');
                 Route::post('login',  ['uses' => '\LaravelAdmin\Base\Controllers\LoginController@login'])->name('attempt');
 
-				Route::group(['middleware' => config('admin.routeMiddleware')], function() use($callable) 
+				Route::group(['middleware' => config('admin.route_middleware')], function() use($callable)
                 {
 	                Route::get('logout',  ['uses' => '\LaravelAdmin\Base\Controllers\LoginController@logout'])->name('logout');
 

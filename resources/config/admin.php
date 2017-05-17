@@ -2,10 +2,10 @@
 
 return [
     // Route group settings
-	'routeGroup' => ['domain' => env('ADMIN_URL'), 'as' => 'admin.'],
+	'route_group' => ['domain' => env('ADMIN_URL'), 'as' => 'admin.'],
 
     // Define which middleware the admin uses
-	'routeMiddleware' => ['middleware' => 'auth.admin'],
+	'route_middleware' => ['middleware' => 'auth.admin'],
 
     // Assets
 	'js'  => ['/assets/admin/js/app.js'],
