@@ -81,11 +81,12 @@
 
     </div>
 
+	@stack('scripts_before')
     <!-- Scripts -->
 	@foreach (config('admin.js') as $js)
     <script src="{{ mix($js) }}"></script>
 	@endforeach
-	@stack('scripts')
+	@stack('scripts_after')
 
 </body>
 </html>
