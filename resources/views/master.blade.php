@@ -21,7 +21,7 @@
 
     <!-- Scripts -->
     <script>window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token()]); ?></script>
-	@stack('scripts_head')
+    @stack('scripts_head')
 </head>
 <body>
     <div id="app">
@@ -49,7 +49,7 @@
                 @if (!Auth::guest())
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
-		            @include('admin::menu')
+                    @include('admin::menu')
 
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -75,18 +75,18 @@
         </nav>
 
         @include('admin::flash')
-
+        <notification></notification>
 
         @yield('content')
 
     </div>
 
-	@stack('scripts_before')
+    @stack('scripts_before')
     <!-- Scripts -->
-	@foreach (config('admin.js') as $js)
+    @foreach (config('admin.js') as $js)
     <script src="{{ mix($js) }}"></script>
-	@endforeach
-	@stack('scripts_after')
+    @endforeach
+    @stack('scripts_after')
 
 </body>
 </html>
