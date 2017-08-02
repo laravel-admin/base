@@ -31,7 +31,7 @@ class LoginController extends Controller
      * @return View 'admin.login'
      */
     public function showLoginForm()
-	{
+    {
         return view('admin::login');
     }
 }

@@ -1,0 +1,11 @@
+{
+  "name": "laravel-admin-base",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laravel-admin/base.git"
+  },
+  "license": "ISC",
+   "require": {
+        "vue": "2.2.3"
+   }
+}
