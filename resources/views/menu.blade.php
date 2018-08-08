@@ -18,9 +18,13 @@
                         <li class="dropdown-submenu">
                             <a href="{{ $child['url'] }}">{{ $child['name'] }}</a>
                             @if ($child['children']->count() > 0)
-                                @foreach ($child['children'] as $grandchild)
-                                    <a href="{{ $grandchild['url'] }}">{{ $grandchild['name'] }}</a>
-                                @endforeach
+                                <ul class="dropdown-menu" role="multi-level">
+                                    @foreach ($child['children'] as $grandchild)
+                                        <li>
+                                            <a href="{{ $grandchild['url'] }}">{{ $grandchild['name'] }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
                             @endif
                         </li>
                     @endforeach
