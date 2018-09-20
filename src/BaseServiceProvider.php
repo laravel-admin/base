@@ -47,8 +47,7 @@ class BaseServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->booting(function()
-        {
+        $this->app->booting(function () {
             // Create alias
             $loader = AliasLoader::getInstance();
             $loader->alias('Admin', 'LaravelAdmin\Base\Facades\Admin');

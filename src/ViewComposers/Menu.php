@@ -12,9 +12,9 @@ class Menu
         $menu = collect(config('admin.menu'));
 
         $menu = $menu->filter([$this, '_filterRole'])->map([$this, '_completeFields']);
-        $menu = $menu->map(function($item){
+        $menu = $menu->map(function ($item) {
             $item['children'] = $item['children']->filter([$this, '_filterRole'])->map([$this, '_completeFields']);
-            $item['children'] = $item['children']->map(function($item){
+            $item['children'] = $item['children']->map(function ($item) {
                 $item['children'] = $item['children']->filter([$this, '_filterRole'])->map([$this, '_completeFields']);
                 return $item;
             });
@@ -59,8 +59,7 @@ class Menu
         // Fix the URL to include leading path, or be # if empty
         if (empty($item['url'])) {
             $item['url'] = '#';
-        }
-        else {
+        } else {
             $item['url'] = config('admin.url') . $item['url'];
         }
 
