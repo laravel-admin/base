@@ -1,45 +1,41 @@
 <ul class="nav navbar-nav">
+    @foreach ($items as $item)
+        <li>
+            @if ($item['children']->count() > 0)
+                <a href="{{ $item['url'] }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    {{ $item['name'] }}
+                    <span class="caret"></span>
+                </a>
+            @else
+                <a href="{{ $item['url'] }}">
+                    {{ $item['name'] }}
+                </a>
+            @endif
 
-	@foreach (config('admin.menu') as $main)
-
-		@if (!empty($main['children']))
-
-			<li>
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-					{{ $main['name'] }} <span class="caret"></span>
-				</a>
-
-				<ul class="dropdown-menu" role="multi-level">
-					@foreach ($main['children'] as $sub)
-						@if (!empty($sub['children']))
-						<li class="dropdown-submenu">
-							<a href="{{ env('ADMIN_URL') . $sub['url'] }}">{{ $sub['name'] }}</a>
-
-							<ul class="dropdown-menu">
-								@foreach ($sub['children'] as $subsub)
-									<li>
-										<a href="{{ env('ADMIN_URL') . $subsub['url'] }}">{{ $subsub['name'] }}</a>
-									</li>
-								@endforeach
-							</ul>
-						</li>
-						@else
-						<li>
-							<a href="{{ env('ADMIN_URL') . $sub['url'] }}">{{ $sub['name'] }}</a>
-						</li>
-						@endif
-					@endforeach
-				</ul>
-			</li>
-
-		@else
-
-			<li>
-				<a href="{{ env('ADMIN_URL') . $main['url'] }}">{{ $main['name'] }}</a>
-			</li>
-
-		@endif
-
-	@endforeach
-
+            @if ($item['children']->count() > 0)
+                <ul class="dropdown-menu" role="multi-level">
+                    @foreach ($item['children'] as $child)
+                        @if ($child['children']->count() > 0)
+                            <li class="dropdown-submenu">
+                                <a href="{{ $child['url'] }}">{{ $child['name'] }}</a>
+                                @if ($child['children']->count() > 0)
+                                    <ul class="dropdown-menu" role="multi-level">
+                                        @foreach ($child['children'] as $grandchild)
+                                            <li>
+                                                <a href="{{ $grandchild['url'] }}">{{ $grandchild['name'] }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ $child['url'] }}">{{ $child['name'] }}</a>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
+            @endif
+        </li>
+    @endforeach
 </ul>

@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'url' => env('ADMIN_URL'),
+
     // Route group settings
 	'route_group' => ['domain' => env('ADMIN_URL'), 'as' => 'admin.'],
 
