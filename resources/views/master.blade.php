@@ -41,7 +41,7 @@
                     @endif
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ env('ADMIN_URL') }}">
+                    <a class="navbar-brand" href="{{ config('admin.url') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
