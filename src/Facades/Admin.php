@@ -2,7 +2,6 @@
 
 namespace LaravelAdmin\Base\Facades;
 
-use LaravelAdmin\BaseServiceProvider as Provider;
 use Route;
 
 class Admin

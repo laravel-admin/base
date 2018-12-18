@@ -2,6 +2,7 @@
 
 namespace LaravelAdmin\Base;
 
+use App\User;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
@@ -15,7 +16,7 @@ class BaseServiceProvider extends ServiceProvider
     public function boot()
     {
         // Load the views
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'admin');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin');
 
         // Publish the config
         $this->publishes([__DIR__ . '/../resources/config/admin.php' => config_path('admin.php')], 'admin-config');
@@ -27,7 +28,7 @@ class BaseServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../resources/migrations');
 
         // Define the basic gate for checking user roles
-        Gate::define('has-role', function ($user, string $role) {
+        Gate::define('has-role', function (User $user, string $role) {
             return $user->role === $role;
         });
 
