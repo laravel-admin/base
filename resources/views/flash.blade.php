@@ -1,14 +1,33 @@
-@if (Session::has('flash_notification.message'))
+@if(session('flash_notification'))
 
-    @if (Session::has('flash_notification.overlay'))
-        @include('flash::modal', ['modalClass' => 'flash-modal', 'title' => Session::get('flash_notification.title'), 'body' => Session::get('flash_notification.message')])
-    @else
-        <div class="alert alert-{{ Session::get('flash_notification.level') }} alert--active disapear">
-            <div class="container">
-                {{ Session::get('flash_notification.message') }}
+    @foreach (session('flash_notification', collect())->toArray() as $message)
+        @if ($message['overlay'])
+            @include('flash::modal', [
+                'modalClass' => 'flash-modal',
+                'title'      => $message['title'],
+                'body'       => $message['message']
+            ])
+        @else
+            <div class="alert
+                        alert-{{ $message['level'] }}
+                        {{ $message['important'] ? 'alert-important' : '' }}
+                        disapear"
+                        role="alert"
+            >
+                @if ($message['important'])
+                    <button type="button"
+                            class="close"
+                            data-dismiss="alert"
+                            aria-hidden="true"
+                    >&times;</button>
+                @endif
+
+                <div class="container">
+                    {!! $message['message'] !!}
+                </div>
             </div>
-        </div>
-    @endif
+        @endif
+    @endforeach
 
 @elseif (isset($errors) && $errors->first())
 
@@ -27,3 +46,5 @@
     </div>
 
 @endif
+
+{{ session()->forget('flash_notification') }}
